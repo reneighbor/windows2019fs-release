@@ -3,17 +3,6 @@
 set -e
 
 DIR="$(cd $(dirname "$0") && cd .. && pwd )"
-WORKDIR=/tmp/go-workdir
-
-function cleanup {
-    rm -rf ${WORKDIR}
-}
-
-trap cleanup exit
-
-mkdir -p ${WORKDIR}
-export GOPATH=${WORKDIR}
-go get github.com/cloudfoundry/hydrator/cmd/hydrate
 
 if [ `uname` == "Linux" ]; then
   TAG="$(cat ${DIR}/config/blobs.yml | grep 'windows2019fs/windows2016fs-' |  grep -oP '\d*\.\d*\.\d*')"
@@ -21,7 +10,9 @@ else
   TAG="$(cat ${DIR}/config/blobs.yml | grep 'windows2019fs/windows2016fs-' |  grep -o '\d*\.\d*\.\d*')"
 fi
 
-${WORKDIR}/bin/hydrate \
+go get code.cloudfoundry.org/hydrator/cmd/hydrate
+
+~/go/bin/hydrate \
   download \
   -image cloudfoundry/windows2016fs \
   -tag ${TAG} \
