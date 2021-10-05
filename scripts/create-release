@@ -12,7 +12,7 @@ fi
 
 go get code.cloudfoundry.org/hydrator/cmd/hydrate
 
-$GOPATH/go/bin/hydrate \
+$GOPATH/bin/hydrate \
   download \
   -image cloudfoundry/windows2016fs \
   -tag ${TAG} \
