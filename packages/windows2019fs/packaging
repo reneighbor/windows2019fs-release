@@ -2,14 +2,13 @@ $ErrorActionPreference = "Stop";
 trap { $host.SetShouldExit(1) }
 
 # Lookup target of symlink, otherwise untar will fail
-$drive = (Get-item "C:\var\vcap\data").Target
 $target = Resolve-Path "${env:BOSH_INSTALL_TARGET}" | Get-Item |  Select-Object -ExpandProperty Target
-$BOSH_INSTALL_TARGET = "$target" -Replace "C:\\var\\vcap\\data\\","$drive"
 
 $rootfsTarball = (get-item windows2019fs\windows2016fs-*.tgz).FullName
 
-tar -xf "$rootfsTarball" -C "$BOSH_INSTALL_TARGET"
+tar -xf "$rootfsTarball" -C "$target"
 if ($LastExitCode -ne 0) {
   Write-Host "extracting tarball failed"
   Exit $LastExitCode
 }
+
