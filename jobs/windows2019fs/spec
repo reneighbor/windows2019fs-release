@@ -24,3 +24,6 @@ properties:
       (contents of certificate #2)
       -----END CERTIFICATE-----
     default: ""
+  groot_ready_timeout:
+    description: "Timeout in minutes to wait for groot pre-start to finish"
+    default: 30

@@ -27,7 +27,7 @@ try {
   $event = New-Object System.Threading.EventWaitHandle($initSignaled, $mode, $sharedEventName)
 }
 
-$timeout = [long]30
+$timeout = [long]<%= p("groot_ready_timeout") %>
 # TODO Validate this
 $minWincReleaseVersion = "v2.0"
 Write-Output "Waiting $timeout minutes for signal from pre-start script of winc-release/job=groot" | timestamp
