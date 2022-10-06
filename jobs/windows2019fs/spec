@@ -26,4 +26,4 @@ properties:
     default: ""
   groot_ready_timeout:
     description: "Timeout in minutes to wait for groot pre-start to finish"
-    default: 30
+    default: 60
