@@ -9,7 +9,7 @@
 	url = https://go.googlesource.com/net
 [submodule "src/gopkg.in/yaml.v2"]
 	path = src/gopkg.in/yaml.v2
-	url = https://gopkg.in/yaml.v2
+	url = https://github.com/go-yaml/yaml
 [submodule "src/golang.org/x/text"]
 	path = src/golang.org/x/text
 	url = https://go.googlesource.com/text
